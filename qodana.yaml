@@ -1,0 +1,8 @@
+version: 1.0
+bootstrap: |
+  dotnet build
+  cd Tests
+  rm -rf bin obj
+  dotnet add package coverlet.msbuild
+  dotnet add package coverlet.collector
+  dotnet test /p:CollectCoverage=true /p:CoverletOutput=../.qodana/code-coverage/code-coverage /p:CoverletOutputFormat=lcov
