@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/data/project/SimpleClassLibrary.csproj": {}
+    "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj": {}
   },
   "projects": {
-    "/data/project/SimpleClassLibrary.csproj": {
+    "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/data/project/SimpleClassLibrary.csproj",
+        "projectUniqueName": "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj",
         "projectName": "SimpleClassLibrary",
-        "projectPath": "/data/project/SimpleClassLibrary.csproj",
-        "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/data/project/obj/",
+        "projectPath": "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj",
+        "packagesPath": "/Users/Irina.Khromova/.nuget/packages/",
+        "outputPath": "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "/Users/Irina.Khromova/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net7.0": {
@@ -90,22 +90,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.20, 7.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.20, 7.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }
