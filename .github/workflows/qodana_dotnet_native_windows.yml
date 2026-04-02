@@ -38,13 +38,34 @@ jobs:
           }
           Write-Host "Java not found — OK"
 
-      - name: Qodana Scan
-        uses: JetBrains/qodana-action@main
+      - name: Download qodana-cli nightly
+        shell: pwsh
+        run: |
+          Invoke-WebRequest `
+            -Uri "https://github.com/JetBrains/qodana-cli/releases/download/v2026.1-nightly/qodana_windows_x86_64.exe" `
+            -OutFile "qodana.exe"
+          Write-Host "CLI version: $(./qodana.exe --version)"
+
+      - name: qodana scan (Docker mode)
+        shell: pwsh
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-        with:
-          use-nightly: true
-          args: --linter qodana-dotnet --within-docker false --save-report
+        run: |
+          ./qodana.exe scan `
+            --linter qodana-dotnet `
+            --within-docker true `
+            --save-report `
+            -i . `
+            -o "$env:RUNNER_TEMP\qodana-results"
+
+      - name: qodana send
+        shell: pwsh
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+        run: |
+          ./qodana.exe send `
+            -i . `
+            -o "$env:RUNNER_TEMP\qodana-results"
 
       - name: Upload results
         if: always()
