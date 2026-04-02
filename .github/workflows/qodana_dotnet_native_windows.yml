@@ -52,8 +52,8 @@ jobs:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         run: |
           ./qodana.exe scan `
-            --linter qodana-dotnet `
-            --within-docker false `
+            --linter qodana-cdnet `
+            --within-docker true `
             --save-report `
             -i . `
             -o "$env:RUNNER_TEMP\qodana-results"
