@@ -53,7 +53,7 @@ jobs:
         run: |
           ./qodana.exe scan `
             --linter qodana-dotnet `
-            --within-docker true `
+            --within-docker false `
             --save-report `
             -i . `
             -o "$env:RUNNER_TEMP\qodana-results"
