@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/data/project/SimpleClassLibrary.csproj": {}
+    "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj": {}
   },
   "projects": {
-    "/data/project/SimpleClassLibrary.csproj": {
+    "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/data/project/SimpleClassLibrary.csproj",
+        "projectUniqueName": "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj",
         "projectName": "SimpleClassLibrary",
-        "projectPath": "/data/project/SimpleClassLibrary.csproj",
-        "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/data/project/obj/",
+        "projectPath": "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/SimpleClassLibrary.csproj",
+        "packagesPath": "/Users/Irina.Khromova/.nuget/packages/",
+        "outputPath": "/Users/Irina.Khromova/RiderProjects/SimpleClassLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "/Users/Irina.Khromova/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -32,11 +32,53 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.13.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "coverlet.msbuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.assert": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }
