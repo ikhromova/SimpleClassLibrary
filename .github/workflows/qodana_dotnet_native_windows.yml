@@ -5,71 +5,41 @@ on:
 
 jobs:
   qodana-native-windows:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Check Java before hiding
-        shell: pwsh
-        continue-on-error: true
-        run: |
-          Write-Host "Java location: $(Get-Command java -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source)"
-          java -version
-
-      - name: Hide Java from PATH
-        shell: pwsh
-        run: |
-          $filtered = ($env:PATH -split ';' | Where-Object {
-            $_ -notmatch 'java|jdk|jre|temurin|adoptium|corretto|graalvm|zulu'
-          }) -join ';'
-          "PATH=$filtered" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          "JAVA_HOME=" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-
-      - name: Verify Java is hidden
-        shell: pwsh
-        run: |
-          $j = Get-Command java -ErrorAction SilentlyContinue
-          if ($j) {
-            Write-Error "Java still found at: $($j.Source)"
-            exit 1
-          }
-          Write-Host "Java not found — OK"
-
       - name: Download qodana-cli nightly
-        shell: pwsh
         run: |
-          Invoke-WebRequest `
-            -Uri "https://github.com/JetBrains/qodana-cli/releases/download/v2026.1-nightly/qodana_windows_x86_64.exe" `
-            -OutFile "qodana.exe"
-          Write-Host "CLI version: $(./qodana.exe --version)"
+          curl -L -o qodana https://github.com/JetBrains/qodana-cli/releases/download/v2026.1-nightly/qodana_linux_x86_64
+          chmod +x qodana
+          ./qodana --version
 
       - name: qodana scan (Docker mode)
-        shell: pwsh
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         run: |
-          ./qodana.exe scan `
-            --linter qodana-cdnet `
-            --within-docker true `
-            --save-report `
-            -i . `
-            -o "$env:RUNNER_TEMP\qodana-results"
+          ./qodana scan \
+            --linter qodana-cdnet \
+            --within-docker true \
+            --save-report \
+            -i . \
+            -o "$RUNNER_TEMP/qodana-results"
 
       - name: qodana send
-        shell: pwsh
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         run: |
-          ./qodana.exe send `
-            -i . `
-            -o "$env:RUNNER_TEMP\qodana-results"
+          ./qodana send \
+            -i . \
+            -o "$RUNNER_TEMP/qodana-results"
 
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: qodana-results
-          path: ${{ runner.temp }}\qodana-results\
+          path: ${{ runner.temp }}/qodana-results/
